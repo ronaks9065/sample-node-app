@@ -1,12 +1,18 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const cors = require("cors");
+import express, { Request, Response } from "express";
+import bodyParser from "body-parser";
+import cors from "cors";
+
 const app = express();
-var corsOptions = {
+
+interface CorsOptions {
+  origin: string;
+  methods: string[];
+  allowedHeaders: string[];
+}
+
+const corsOptions: CorsOptions = {
   origin: "*",
-
   methods: ["POST", "GET", "PUT", "DELETE"],
-
   allowedHeaders: ["Content-Type"],
 };
 
@@ -14,14 +20,12 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-app.get("/", (req, res) => {
+app.get("/", (req: Request, res: Response) => {
   res.json({ message: "People Analytics Registration Module Is Running" });
 });
 
-const PORT = process.env.PORT || 3000;
+const PORT: number = parseInt(process.env.PORT || "3000", 10);
+
 app.listen(PORT, () => {
   console.log(
-    `People Analytics Registration Module is running on port ${PORT}.`
-  );
-});
+    `People Analytics Registration Module is running o
