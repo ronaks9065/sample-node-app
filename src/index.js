@@ -28,4 +28,6 @@ const PORT: number = parseInt(process.env.PORT || "3000", 10);
 
 app.listen(PORT, () => {
   console.log(
-    `People Analytics Registration Module is running o
+    `People Analytics Registration Module is running on port ${PORT}.`
+  );
+});
